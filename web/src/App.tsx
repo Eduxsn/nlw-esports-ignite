@@ -10,7 +10,7 @@ import { CreateAdModal } from './components/Form/CreateAdModal';
 import axios from 'axios';
 import { GamePictureCarrousel } from './components/Slider/GamePictureCarrousel';
 
-interface Game {
+export interface GameProps {
   id: string;
   title: string;
   bannerUrl: string;
@@ -19,8 +19,9 @@ interface Game {
   }
 }
 
+
 function App() {
-  const [games, setGames] = useState<Game[]>([])
+  const [games, setGames] = useState<GameProps[]>([])
 
   useEffect(() => {
     axios('http://localhost:3333/games').then(response => {
@@ -29,14 +30,16 @@ function App() {
   }, [])
 
   return (
-    <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
+    <div className="max-w-[1344px] mx-auto flex flex-col items-center mt-20">
       <img src={logoImg}/>
 
-      <h1 className="text-6xl text-white font-black mt-20">
+      <h1 className="text-6xl text-white font-black mb-10 mt-20">
         Seu <span className="text-transparent bg-clip-text bg-nlw-gradient">duo</span> está aqui.
       </h1>
 
       <GamePictureCarrousel />
+
+      {/* OLD GAMES LIST
 
       <div className="grid grid-cols-6 gap-6 mt-16">
 
@@ -51,7 +54,7 @@ function App() {
           )
         })}
         
-      </div>
+      </div> */}
 
       <Dialog.Root>
 
